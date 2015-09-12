@@ -44,6 +44,19 @@ data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r")
 ### there's an outlier--remove it! 
 data_dict.pop("TOTAL", 0)
 
+# min_val = None
+# max_val = None
+# for key in data_dict:
+# 	value = data_dict[key]['salary']
+# 	if value != 'NaN':
+# 		if min_val is None or min_val > value:
+# 			min_val = value
+# 		if max_val is None or max_val < value:
+# 			max_val = value
+
+# print min_val, max_val
+
+# sys.exit(0)
 
 ### the input features we want to use 
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
@@ -54,6 +67,16 @@ features_list = [poi, feature_1, feature_2]
 data = featureFormat(data_dict, features_list )
 poi, finance_features = targetFeatureSplit( data )
 
+# finance_features = [[float(x[0]), float(x[1])] for x in finance_features]
+
+# from numpy import array
+# finance_features = array(finance_features)
+
+# from sklearn.preprocessing import MinMaxScaler
+# scaler = MinMaxScaler()
+# finance_features = scaler.fit_transform(finance_features)
+
+# print scaler.transform([[200000., 1000000.]])
 
 ### in the "clustering with 3 features" part of the mini-project,
 ### you'll want to change this line to 
@@ -62,8 +85,6 @@ poi, finance_features = targetFeatureSplit( data )
 for f1, f2 in finance_features:
     plt.scatter( f1, f2 )
 plt.show()
-
-
 
 from sklearn.cluster import KMeans
 features_list = ["poi", feature_1, feature_2]
