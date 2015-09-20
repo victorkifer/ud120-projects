@@ -45,22 +45,31 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         print path
         email = open(path, "r")
 
-	words = parseOutText(email)
-	words = words.replace("sara", "")
+    	words = parseOutText(email)
+    	words = words.replace("sara", "")
         words = words.replace("shackleton", "")
         words = words.replace("chris", "")
         words = words.replace("germani", "")
+        words = words.replace("sshacklensf", "")
+        words = words.replace("cgermannsf", "")
+        words = words.replace("houectect", "")
+        words = words.replace("houect", "")
+        words = words.replace("houston", "")
+        # words = words.replace("fax", "")
+        # words = words.replace("forward", "")
+        # words = words.replace("smith", "")
+        # words = words.replace("germany", "")
 
-	word_data.append(words)
-	
-	if (name == "sara"):
-	    from_data.append(0)
-	else:
-	    from_data.append(1)
+        word_data.append(words)
+
+        if (name == "sara"):
+    	    from_data.append(0)
+        else:
+    	    from_data.append(1)
 
         email.close()
 
-print word_data[152]
+# print word_data[152]
 
 print "emails processed"
 from_sara.close()
@@ -76,7 +85,7 @@ tfidf = TfidfVectorizer(sublinear_tf=True, stop_words='english', analyzer='word'
 tfidf.fit(word_data)
 print len(tfidf.get_feature_names())
 
-print tfidf.get_feature_names()[34597]
+# print tfidf.get_feature_names()[34597]
 
 
 ### in Part 4, do TfIdf vectorization here
